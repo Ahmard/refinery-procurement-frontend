@@ -1,0 +1,34 @@
+services:
+  refinery-procurement-dashboard:
+    container_name: refinery-procurement-dashboard
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    environment:
+      PORT: "${DASHBOARD_SERVER_PORT}"
+    env_file:
+      - .env
+      - .env.production
+    ports:
+      - "${DASHBOARD_SERVER_PORT}:${DASHBOARD_SERVER_PORT}"
+    networks:
+      - ahmard-main-network
+    dns:
+      - "${DOCKER_DNS_PREFIX}.254"
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:${DASHBOARD_SERVER_PORT}/" ]
+      interval: 1m30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "5m"
+        max-file: "3"
+
+networks:
+  ahmard-main-network:
+    name: ahmard-main-network
+    external: true

@@ -1,0 +1,296 @@
+@import '../styles/variables.css';
+@import '../styles/responsive.module.css';
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+    'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+    'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Ant Design Overrides */
+.ant-btn-primary {
+  background-color: var(--color-primary);
+}
+
+.ant-btn-primary:hover {
+  background-color: var(--color-primary-hover);
+}
+
+/* Status Badge Colors */
+.status-draft {
+  color: var(--status-draft);
+}
+
+.status-submitted {
+  color: var(--status-submitted);
+}
+
+.status-approved {
+  color: var(--status-approved);
+}
+
+.status-rejected {
+  color: var(--status-rejected);
+}
+
+.status-fulfilled {
+  color: var(--status-fulfilled);
+}
+
+/* Print Styles */
+@media print {
+  /* Hide non-essential elements */
+  .ant-layout-header,
+  .ant-layout-sider,
+  .ant-menu,
+  .no-print,
+  button,
+  .ant-btn,
+  nav,
+  header:not(.print-header) {
+    display: none !important;
+  }
+
+  /* Ensure body uses full width */
+  body,
+  html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* Main container adjustments */
+  .ant-layout-content {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* Card styling for print */
+  .ant-card {
+    box-shadow: none !important;
+    border: 1px solid #d9d9d9 !important;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  /* Remove backgrounds to save ink */
+  * {
+    background: transparent !important;
+    color: #000 !important;
+  }
+
+  /* Ensure text is black */
+  body {
+    color: #000;
+  }
+
+  /* Typography adjustments */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    page-break-after: avoid;
+    page-break-inside: avoid;
+    color: #000;
+  }
+
+  p,
+  span,
+  div {
+    orphans: 3;
+    widows: 3;
+  }
+
+  /* Table styling */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    page-break-inside: auto;
+  }
+
+  th,
+  td {
+    border: 1px solid #000 !important;
+    padding: 8px;
+    page-break-inside: avoid;
+  }
+
+  thead {
+    display: table-header-group;
+  }
+
+  tr {
+    page-break-inside: avoid;
+  }
+
+  /* Descriptions component */
+  .ant-descriptions-bordered {
+    border: 1px solid #d9d9d9;
+  }
+
+  .ant-descriptions-item-label {
+    background-color: #fafafa !important;
+    font-weight: bold;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Status badge - ensure visible */
+  .ant-tag {
+    border: 1px solid #000;
+    background: #fff !important;
+    color: #000 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Links */
+  a {
+    text-decoration: underline;
+    color: #000;
+  }
+
+  a[href]:after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+  }
+
+  /* Images */
+  img {
+    max-width: 100%;
+  }
+
+  /* Page breaks */
+  @page {
+    size: A4;
+    margin: 2cm;
+  }
+
+  /* Force specific elements to start on new page if needed */
+  .page-break-before {
+    page-break-before: always;
+  }
+
+  .page-break-after {
+    page-break-after: always;
+  }
+
+  .no-page-break {
+    page-break-inside: avoid;
+  }
+
+  /* Footer for print with page numbers */
+  @page {
+    @bottom-right {
+      content: "Page " counter(page) " of " counter(pages);
+    }
+  }
+
+  /* Ensure proper spacing */
+  .ant-row {
+    margin: 0;
+  }
+
+  .ant-col {
+    padding: 0;
+  }
+
+  /* Remove hover effects */
+  *:hover {
+    background: transparent !important;
+  }
+
+  /* Remove shadows and borders that waste ink */
+  .ant-card,
+  .ant-table,
+  .ant-descriptions {
+    box-shadow: none !important;
+  }
+
+  /* Ensure all content is visible */
+  .ant-collapse-content-active,
+  .ant-collapse-item > .ant-collapse-content {
+    display: block !important;
+  }
+
+  /* Prevent overflow issues */
+  body {
+    overflow: visible !important;
+  }
+
+  /* Make sure tables don't get cut off */
+  .ant-table-wrapper {
+    overflow: visible !important;
+  }
+
+  /* Supplier info section */
+  .supplier-info {
+    break-inside: avoid;
+  }
+
+  /* Totals section - keep together */
+  .totals-section {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  /* Print container */
+  .print-container {
+    padding: 0 !important;
+    max-width: 100% !important;
+  }
+}
+
+/* Screen-only styles (hide when printing) */
+@media screen {
+  .print-only {
+    display: none !important;
+  }
+}
+
+/* Print-only styles (hide on screen) */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  .print-only {
+    display: block !important;
+  }
+}

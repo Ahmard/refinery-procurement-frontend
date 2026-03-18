@@ -1,0 +1,187 @@
+/* Responsive Design Utilities */
+
+/* Mobile-first container */
+.container {
+  width: 100%;
+  padding: 16px;
+}
+
+@media (min-width: 576px) {
+  .container {
+    padding: 24px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1400px;
+  }
+}
+
+/* Responsive table wrapper - enables horizontal scroll on mobile */
+.tableWrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
+}
+
+/* Hide scrollbar but keep functionality */
+.tableWrapper::-webkit-scrollbar {
+  height: 6px;
+}
+
+.tableWrapper::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.tableWrapper::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 3px;
+}
+
+.tableWrapper::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Touch-friendly interactive elements */
+.touchTarget {
+  min-height: 44px; /* WCAG accessibility guideline */
+  min-width: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+}
+
+/* Responsive grid layouts */
+.responsiveGrid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 576px) {
+  .responsiveGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 768px) {
+  .responsiveGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 992px) {
+  .responsiveGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Stack columns on mobile */
+.stackOnMobile {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+@media (min-width: 768px) {
+  .stackOnMobile {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+}
+
+/* Hide/show based on screen size */
+@media (max-width: 767px) {
+  .hideOnMobile {
+    display: none !important;
+  }
+  
+  .showOnMobile {
+    display: block !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .hideOnDesktop {
+    display: none !important;
+  }
+  
+  .showOnDesktop {
+    display: block !important;
+  }
+}
+
+/* Responsive text sizes */
+.responsiveTitle {
+  font-size: 20px;
+}
+
+@media (min-width: 576px) {
+  .responsiveTitle {
+    font-size: 24px;
+  }
+}
+
+@media (min-width: 768px) {
+  .responsiveTitle {
+    font-size: 28px;
+  }
+}
+
+@media (min-width: 992px) {
+  .responsiveTitle {
+    font-size: 32px;
+  }
+}
+
+/* Card responsive spacing */
+.responsiveCard {
+  padding: 16px;
+}
+
+@media (min-width: 576px) {
+  .responsiveCard {
+    padding: 24px;
+  }
+}
+
+/* Form responsive layout */
+.responsiveForm {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+@media (min-width: 768px) {
+  .responsiveForm {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+}
+
+.fullWidthOnMobile {
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .fullWidthOnMobile {
+    width: auto;
+  }
+}
