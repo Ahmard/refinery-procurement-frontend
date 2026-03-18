@@ -98,7 +98,7 @@ export const procurementApi = {
    */
   list: async (params: POFilters): Promise<ApiResponse<POListResponse>> => {
     const response = await apiClient.get<ApiResponse<POListResponse>>(
-      '/purchase-orders',
+      '/procurement/purchase-orders',
       { params, baseURL: procurement }
     );
     return response.data;
